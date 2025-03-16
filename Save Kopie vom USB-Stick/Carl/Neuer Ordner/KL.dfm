@@ -1,0 +1,95 @@
+object Form1: TForm1
+  Left = 192
+  Top = 125
+  Caption = 'Form1'
+  ClientHeight = 546
+  ClientWidth = 559
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OnCreate = FormCreate
+  TextHeight = 20
+  object Label1: TLabel
+    Left = 168
+    Top = 4
+    Width = 195
+    Height = 46
+    Caption = 'Nim - Spiel'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -40
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object LabelPoints: TLabel
+    Left = 112
+    Top = 104
+    Width = 128
+    Height = 20
+    Caption = 'Punktestand: 0 : 0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object LabelPinsLeft: TLabel
+    Left = 368
+    Top = 339
+    Width = 126
+    Height = 20
+    Caption = 'hhhhhhhhhhhhhh'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object PaintBox1: TPaintBox
+    Left = 318
+    Top = 68
+    Width = 233
+    Height = 265
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 178
+    Width = 164
+    Height = 20
+    Caption = 'Nimm 1-3 Streichh'#246'lzer'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Button1: TButton
+    Left = 192
+    Top = 178
+    Width = 113
+    Height = 54
+    Caption = 'Nimm'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Edit2: TEdit
+    Left = 16
+    Top = 204
+    Width = 145
+    Height = 28
+    TabOrder = 1
+  end
+end

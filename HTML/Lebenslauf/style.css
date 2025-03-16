@@ -1,0 +1,51 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    margin: 0;
+    background-color: aqua;
+    text-align: center;
+}
+
+header {
+    position: relative;
+    font-size: 20px;
+    background: steelblue;
+    padding: 20px;
+    font-style: normal;
+    color: white;
+}
+
+header p {
+    font-style: italic;
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 3px 6px 10px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    width: 80%;
+}
+footer {
+    font-style: normal;
+    font-size: 26px;
+    margin-top: 40px auto;
+    padding: 40px;
+    background-color: steelblue;
+    color: white;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+a:visited {
+    color: #4f0578;
+}
+a:hover {
+    font-size: 30px;
+}
+a{
+    color: #4f0578;
+}

@@ -1,0 +1,45 @@
+unit KL;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Edit2: TEdit;
+    Label1: TLabel;
+    LabelPoints: TLabel;
+    LabelPinsLeft: TLabel;
+    PaintBox1: TPaintBox;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private-Deklarationen }
+  public
+    { Public-Deklarationen }
+  end;
+
+var
+  Form1: TForm1;
+  PinBegin : integer;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+PinToken : integer;
+begin
+PinBegin := 21;
+PinToken :=  StrToInt(Edit2.Text);
+
+if (PinToken < 0) OR (PinToken > 3) then
+MessageDlg('Die Zahl muss zwischen 1 und 3 sein', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0)
+
+end;
+
+
+end.

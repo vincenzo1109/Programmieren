@@ -19,7 +19,9 @@ header {
 header p {
     font-style: italic;
 }
-
+section {
+    font-size: 12pt;
+}
 section h1 {
     text-decoration: underline;
 }
@@ -58,7 +60,7 @@ bottom: 2%;
 }
 
 .Bild {
-    font-size: 20px;
+
     display: flex;
     position: relative;
     margin: 20px auto;

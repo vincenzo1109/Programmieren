@@ -20,7 +20,7 @@ header p {
     font-style: italic;
 }
 section {
-    font-size: 12pt;
+    font-size: 1rem;
 }
 section h1 {
     text-decoration: underline;

@@ -118,9 +118,9 @@ a {
 progress {
     display: block;
     margin: auto;
-    border-radius: 9px;
+    border-radius: 15px;
     width: 100%;
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: whitesmoke;
     box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.5);
 }
@@ -131,12 +131,12 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background-color: aqua;
+    background-color: #ff0026;
     border-radius: 10px;
 }
 
 progress::-moz-progress-bar {
-    background-color: aqua;
+    background-color: #ff0026;
     border-radius: 10px;
 }
 

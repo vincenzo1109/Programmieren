@@ -1,6 +1,6 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 15pt;
+    font-size: 18pt;
     margin: 0;
     background-color: aqua;
     text-align: center;
@@ -8,7 +8,7 @@ body {
 
 header {
     position: relative;
-    font-size: 20pt;
+    font-size: 22pt;
     background: steelblue;
     padding: 20px;
     font-style: normal;
@@ -21,7 +21,7 @@ header p {
 }
 
 section {
-    font-size: 14pt;
+    font-size: 18pt;
     background-color: white;
 }
 
@@ -90,7 +90,7 @@ section h1 {
 
 footer {
     font-style: normal;
-    font-size: 26px;
+    font-size: 22pt;
     margin-top: 50px;
     padding: 40px;
     background-color: steelblue;
@@ -98,7 +98,7 @@ footer {
 }
 
 h2 {
-    font-size: 20pt;
+    font-size: 22pt;
 text-decoration: underline;
 }
 

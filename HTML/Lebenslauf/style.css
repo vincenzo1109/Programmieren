@@ -9,7 +9,7 @@ body {
 header {
     position: relative;
     font-size: 22pt;
-    background: steelblue;
+    background: #173857;
     padding: 1px;
     font-style: normal;
     color: whitesmoke;
@@ -94,7 +94,7 @@ footer {
     font-size: 22pt;
     margin-top: 50px;
     padding: 40px;
-    background-color: steelblue;
+    background-color: #173857;
     color: white;
 }
 

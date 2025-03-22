@@ -140,12 +140,12 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background-color: #ff0026;
+    background-color: #173857;
     border-radius: 10px;
 }
 
 progress::-moz-progress-bar {
-    background-color: #ff0026;
+    background-color: #173857;
     border-radius: 10px;
 }
 

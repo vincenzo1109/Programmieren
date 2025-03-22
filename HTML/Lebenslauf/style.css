@@ -104,16 +104,25 @@ text-decoration: underline;
 }
 
 a:visited {
-    color: white;
+    color: black;
 }
 
 a {
-    color: white;
+    color: black;
 }
 
 .Fähigkeiten {
 
 }
+
+Footer a{
+color: white;
+}
+
+Footer a:visited{
+color: white;
+}
+
 
 progress {
     display: block;

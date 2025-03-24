@@ -64,6 +64,12 @@ section h1 {
 .Bild div {
     flex: 1;
 }
+#png{
+    position: absolute;
+}
+.Normal-png {
+    max-width: 100px;
+}
 
 .Bild {
 
@@ -100,7 +106,7 @@ footer {
 
 h2 {
     font-size: 22pt;
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 a:visited {

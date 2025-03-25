@@ -44,7 +44,7 @@ section h1 {
 .Bild .oben-Rechts {
     position: absolute;
     margin: 10px;
-    max-width:30%;
+    max-width: 30%;
     max-height: 50%;
     border-radius: 10px;
     top: 2%;
@@ -67,8 +67,8 @@ section h1 {
     flex: 1;
 }
 
-.Normal-png {
-    width:10%;
+.Logo-png {
+    width: 10%;
     position: absolute;
     top: 10px;
     left: 10px;
@@ -106,6 +106,7 @@ footer {
     padding: 40px;
     background-color: #173857;
     color: white;
+
 }
 
 h2 {
@@ -125,12 +126,12 @@ a {
 
 }
 
-Footer a{
-color: white;
+Footer a {
+    color: white;
 }
 
-Footer a:visited{
-color: white;
+Footer a:visited {
+    color: white;
 }
 
 progress {
@@ -144,8 +145,9 @@ progress {
 }
 
 progress::-webkit-progress-value {
-    background: linear-gradient(to right, #b10000 0%, orange 40%,yellow 60%, #0dca0d 100%) ;
     border-radius: 10px;
+    background: linear-gradient(to right, #b10000 0%, orange 40%, yellow 60%, #0dca0d 100%);
+
 }
 
 progress::-webkit-progress-bar {
@@ -154,7 +156,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-moz-progress-bar {
-    background-color: #173857;
+    background: linear-gradient(to right, #b10000 0%, orange 40%, yellow 60%, #0dca0d 100%);
     border-radius: 10px;
 }
 
@@ -162,3 +164,13 @@ progress::-moz-progress-bar {
     margin: 20px auto 5px auto;
 }
 
+.Kontakt-png {
+    position: relative;
+    width: min(30%,200px);
+    height:auto;
+}
+footer div{
+    display: block;
+    padding : 10px;
+;
+}

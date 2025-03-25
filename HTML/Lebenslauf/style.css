@@ -166,7 +166,7 @@ progress::-moz-progress-bar {
 
 .Kontakt-png {
     position: relative;
-    width: 15%;
+    width: max(5%,150px);
 }
 
 footer div {

@@ -143,13 +143,13 @@ progress {
     box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.5);
 }
 
-progress::-webkit-progress-bar {
-    background-color: whitesmoke;
+progress::-webkit-progress-value {
+    background: linear-gradient(to right, #b10000 0%, orange 40%,yellow 60%, #0dca0d 100%) ;
     border-radius: 10px;
 }
 
-progress::-webkit-progress-value {
-    background-color: #173857;
+progress::-webkit-progress-bar {
+    background-color: whitesmoke;
     border-radius: 10px;
 }
 

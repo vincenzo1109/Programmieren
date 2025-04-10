@@ -1,6 +1,8 @@
+html{
+    font-size: 120%;
+}
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 14pt;
     background: #f3a448;
     display: flex;
     justify-content: center;
@@ -8,7 +10,7 @@ body{
     flex-direction: column;
 }
 #header{
-    width: 80%;
+    width: 100%;
     background: #b875fd;
     text-align: center;
 }
@@ -38,4 +40,13 @@ h1{
 }
 #test input, #test button {
     font-size: 14pt;
+}
+#game{
+    height: 4000px;
+}
+@media (max-width: 768px) {
+    html{
+        font-size: 150%;
+    }
+
 }

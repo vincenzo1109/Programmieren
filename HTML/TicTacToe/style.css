@@ -1,0 +1,33 @@
+body{
+    background: #f3a448;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#header{
+    width: 100%;
+    background: #b875fd;
+    text-align: center;
+}
+h1{
+    font-size: 30pt;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+#test{
+    margin: 20px;
+    padding: 10px;
+    background: #73e0ef;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 10px;
+}
+#test p{
+    text-decoration: underline;
+    font-size: 15pt;
+}

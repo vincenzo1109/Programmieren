@@ -8,7 +8,7 @@ body{
     flex-direction: column;
 }
 #header{
-    width: 100%;
+    width: 80%;
     background: #b875fd;
     text-align: center;
 }

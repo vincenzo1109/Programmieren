@@ -4,12 +4,13 @@
     <script rel="text/javascript" src="logic.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
 </head>
 <body>
 <section id="header">
-<h1>TicTacToe</h1>
-<h2>Dies ist eine Website um TicTacToe zu spielen</h2>
+    <h1>TicTacToe</h1>
+    <h2>Dies ist eine Website um TicTacToe zu spielen</h2>
 </section>
 <section id="test">
     <p>Ein kleiner Rechner zum Test von Java-Script</p>
@@ -19,7 +20,17 @@
     <output id="Output1"></output>
 </section>
 <section id="game">
-
+    <div id="board">
+        <div id="0" class="cell" onclick="Zeichnen(0)"></div>
+        <div id="1" class="cell" onclick="Zeichnen(1)"></div>
+        <div id="2" class="cell" onclick="Zeichnen(2)"></div>
+        <div id="3" class="cell" onclick="Zeichnen(3)"></div>
+        <div id="4" class="cell" onclick="Zeichnen(4)"></div>
+        <div id="5" class="cell" onclick="Zeichnen(5)"></div>
+        <div id="6" class="cell" onclick="Zeichnen(6)"></div>
+        <div id="7" class="cell" onclick="Zeichnen(7)"></div>
+        <div id="8" class="cell" onclick="Zeichnen(8)"></div>
+    </div>
 </section>
 </body>
 </html>

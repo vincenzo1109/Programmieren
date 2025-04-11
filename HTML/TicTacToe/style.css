@@ -1,7 +1,8 @@
-html{
+html {
     font-size: 120%;
 }
-body{
+
+body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: #f3a448;
     display: flex;
@@ -9,18 +10,20 @@ body{
     align-items: center;
     flex-direction: column;
 }
-#header{
+
+#header {
     width: 100%;
     background: #b875fd;
     text-align: center;
 }
-h1{
+
+h1 {
     font-size: 30pt;
     font-style: italic;
     text-decoration: underline;
 }
 
-#test{
+#test {
     margin: 20px;
     padding: 10px;
     background: #73e0ef;
@@ -31,22 +34,53 @@ h1{
     align-items: center;
     width: 60%;
     gap: 10px;
+    border: 6px solid;
+    border-radius: 50px;
+    box-shadow: 5px 5px 20px black;
 }
-#test p{
+
+#test p {
     text-decoration: underline;
     font-size: 16pt;
     font-weight: bold;
     text-align: center;
 }
+
 #test input, #test button {
     font-size: 14pt;
 }
-#game{
-    height: 4000px;
+
+.cell {
+    background: #b875fd;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70pt;
 }
-@media (max-width: 768px) {
-    html{
-        font-size: 150%;
-    }
+
+#board {
+    padding: 30px;
+    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows:  repeat(3, 100px);
+    justify-content: center;
+    align-items: center;
+    border: 7px solid black;
+    box-shadow: 5px 5px 10px #000000;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+#game {
+    background: #7d00ff;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
 
 }

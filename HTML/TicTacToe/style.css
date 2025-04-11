@@ -71,16 +71,20 @@ h1 {
     grid-template-rows:  repeat(3, 100px);
     justify-content: center;
     align-items: center;
+
+}
+
+#game {
+    background: #7d00ff;
+    width: fit-content;
+    height: fit-content;
     border: 7px solid black;
     box-shadow: 5px 5px 10px #000000;
     border-radius: 12px;
     box-sizing: border-box;
 }
-
-#game {
-    background: #7d00ff;
-    border-radius: 10px;
-    width: fit-content;
-    height: fit-content;
-
+.Überschrift{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

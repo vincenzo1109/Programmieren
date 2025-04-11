@@ -11,11 +11,14 @@ function auslesen() {
 
 function Zeichnen(a) {
     let pressedBox = document.getElementById(a);
-
-    pressedBox.innerText = currentplayer;
-    if (currentplayer === 'X') {
-        currentplayer = 'O'
+    if (pressedBox.innerText == 'X' || pressedBox.innerText == 'O') {
+        alert('Dieses Feld ist bereits belegt')
     } else {
-        currentplayer = 'X'
+        pressedBox.innerText = currentplayer;
+        if (currentplayer === 'X') {
+            currentplayer = 'O'
+        } else {
+            currentplayer = 'X'
+        }
     }
 }

@@ -26,6 +26,7 @@
     <label for="player2">Spieler 2:</label><input type="text" placeholder="Second Player name" id="player2">
     </div>
     <Label id="Points"></Label>
+    <Label id="Won"></Label>
     <div id="board">
         <div id="0" class="cell" onclick="Zeichnen(0)"></div>
         <div id="1" class="cell" onclick="Zeichnen(1)"></div>
@@ -37,8 +38,8 @@
         <div id="7" class="cell" onclick="Zeichnen(7)"></div>
         <div id="8" class="cell" onclick="Zeichnen(8)"></div>
     </div>
-    <button>Zurücksetzen der Punkte</button>
-    <button>Zurücksetzen des Spielfeldes</button>
+    <button onclick="Pointsreset()">Zurücksetzen der Punkte</button>
+    <button onclick="FieldReset()">Zurücksetzen des Spielfeldes</button>
     <div id="Fehler"></div>
 </section>
 </body>

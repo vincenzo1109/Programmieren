@@ -31,7 +31,7 @@ h1 {
     justify-content: center;
     text-align: center;
     align-items: center;
-    width: 70%;
+    width: 790px;
     gap: 10px;
     border: 6px solid;
     border-radius: 50px;
@@ -79,7 +79,7 @@ button {
 
 #game {
     background: #a04bff;
-    width: 70%;
+    width: 800px;
     height: fit-content;
     border: 7px solid black;
     box-shadow: 5px 5px 10px #000000;

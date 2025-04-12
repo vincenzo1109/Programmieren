@@ -1,4 +1,8 @@
-let currentplayer = 'X'
+alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus.' +
+    'Sonst stimmen die Proportionen der Felder nicht überein. Danke :)')
+currentplayer = 'X'
+let a = 0
+let b = 0
 
 function auslesen() {
 
@@ -52,10 +56,14 @@ function Gewonnen(Board, Player1, Player2) {
             setTimeout(function Timer() {
                 if (Board[i * 3] === 'X') {
                     Points(Player1)
+                    a = a + 1
+                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                     Reset(Board)
 
                 } else if (Board[i * 3] === 'O') {
                     Points(Player2)
+                    b = b + 1
+                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                     Reset(Board)
                 }
             }, 150)
@@ -64,10 +72,14 @@ function Gewonnen(Board, Player1, Player2) {
             setTimeout(function Timer() {
                 if (Board[i] === 'X') {
                     Points(Player1)
+                    a = a + 1
+                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                     Reset(Board)
 
                 } else if (Board[i] === 'O') {
                     Points(Player2)
+                    b = b + 1
+                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                     Reset(Board)
                 }
             }, 150)
@@ -76,10 +88,14 @@ function Gewonnen(Board, Player1, Player2) {
             setTimeout(function Timer() {
                 if (Board[0] === 'X') {
                     Points(Player1)
+                    a = a + 1
+                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                     Reset(Board)
 
                 } else if (Board[0] === 'O') {
                     Points(Player2)
+                    b = b + 1
+                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                     Reset(Board)
                 }
             }, 150)
@@ -88,42 +104,59 @@ function Gewonnen(Board, Player1, Player2) {
                 setTimeout(function Timer() {
                     if (Board[2] === 'X') {
                         Points(Player1)
+                        a = a + 1
+                        document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                         Reset(Board)
 
                     } else if (Board[2] === 'O') {
                         Points(Player2)
+                        b = b + 1
+                        document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
                         Reset(Board)
                     }
                 }, 150)
             }
         }
     }
+}
 
-    function Reset(Board) {
-        for (let j = 0; j < 9; j++) {
-            Board[j] = ''
-            document.getElementById(j).innerText = Board[j]
+function Reset(Board) {
+    for (let j = 0; j < 9; j++) {
+        Board[j] = ''
+        document.getElementById(j).innerText = Board[j]
+    }
+}
+
+function Unentschieden(board) {
+    setTimeout(() => {
+        let c = 0
+        for (let i = 0; i < 9; i++) {
+            if (board[i] !== '') {
+                c = c + 1
+                console.log(a)
+            }
         }
-    }
-
-    function Unentschieden(board) {
-        setTimeout(() => {
-            let a = 0
-            for (let i = 0; i < 9; i++) {
-                if (board[i] !== '') {
-                    a = a + 1
-                    console.log(a)
-                }
-            }
-            if (a === 9) {
-                alert('Es ist ein Unentschieden')
-                Reset(board)
-            }
-        }, 150)
-    }
+        if (c === 9) {
+            alert('Es ist ein Unentschieden')
+            Reset(board)
+        }
+    }, 150)
 }
 
 function Points(Player) {
     console.log('Gewinner: ' + Player);
-    document.getElementById("Points").innerText = Player + ' hat gewonnen'
+    document.getElementById("Won").innerText = Player + ' hat gewonnen';
+}
+
+function Pointsreset() {
+    a = 0
+    b = 0
+    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
+    document.getElementById("Won").innerText = ''
+}
+
+function FieldReset() {
+    for (i = 0; i < 9; i++) {
+        document.getElementById(i).innerText = ''
+    }
 }

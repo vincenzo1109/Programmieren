@@ -21,8 +21,14 @@ function Zeichnen(a) {
             currentplayer = 'X'
         }
     }
-    let Player1 = document.getElementById("player1").value;
-    let Player2 = document.getElementById("player2").value;
+    let Player1 = 'X'
+    let Player2 = 'O'
+    if (document.getElementById("player1").value !== '') {
+        Player1 = document.getElementById("player1").value;
+    }
+    if (document.getElementById("player2").value !== '') {
+        Player2 = document.getElementById("player2").value;
+    }
     console.log(Player1, Player2);
 
     Board_Kopieren(Player1, Player2)
@@ -54,30 +60,67 @@ function Gewonnen(Board, Player1, Player2) {
                 }
             }, 150)
         }
-    }
-}
+        if (Board[i] === Board[i + 3] && Board[i + 3] === Board[i + 6] && Board [i] !== '') {
+            setTimeout(function Timer() {
+                if (Board[i] === 'X') {
+                    Points(Player1)
+                    Reset(Board)
 
-function Reset(Board) {
-    for (let j = 0; j < 9; j++) {
-        Board[j] = ''
-        document.getElementById(j).innerText = Board[j]
-    }
-}
+                } else if (Board[i] === 'O') {
+                    Points(Player2)
+                    Reset(Board)
+                }
+            }, 150)
+        }
+        if (Board[0] === Board[4] && Board[4] === Board[8] && Board [0] !== '') {
+            setTimeout(function Timer() {
+                if (Board[0] === 'X') {
+                    Points(Player1)
+                    Reset(Board)
 
-function Unentschieden(board) {
-    setTimeout(() => {
-        let a = 0
-        for (let i = 0; i < 9; i++) {
-            if (board[i] !== '') {
-                a = a + 1
-                console.log(a)
+                } else if (Board[0] === 'O') {
+                    Points(Player2)
+                    Reset(Board)
+                }
+            }, 150)
+
+            if (Board[2] === Board[4] && Board[4] === Board[6] && Board [2] !== '') {
+                setTimeout(function Timer() {
+                    if (Board[2] === 'X') {
+                        Points(Player1)
+                        Reset(Board)
+
+                    } else if (Board[2] === 'O') {
+                        Points(Player2)
+                        Reset(Board)
+                    }
+                }, 150)
             }
         }
-        if (a === 9) {
-            alert('Es ist ein Unentschieden')
-            Reset(board)
+    }
+
+    function Reset(Board) {
+        for (let j = 0; j < 9; j++) {
+            Board[j] = ''
+            document.getElementById(j).innerText = Board[j]
         }
-    }, 150)
+    }
+
+    function Unentschieden(board) {
+        setTimeout(() => {
+            let a = 0
+            for (let i = 0; i < 9; i++) {
+                if (board[i] !== '') {
+                    a = a + 1
+                    console.log(a)
+                }
+            }
+            if (a === 9) {
+                alert('Es ist ein Unentschieden')
+                Reset(board)
+            }
+        }, 150)
+    }
 }
 
 function Points(Player) {

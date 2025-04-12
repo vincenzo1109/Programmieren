@@ -9,7 +9,7 @@
 </head>
 <body>
 <section id="header">
-    <h1>TicTacToe</h1>
+    <h1 class="Überschrift">TicTacToe</h1>
     <h2>Dies ist eine Website um TicTacToe zu spielen</h2>
 </section>
 <section id="test">
@@ -21,6 +21,11 @@
 </section>
 <section id="game">
     <div><h1 class="Überschrift">TicTacToe-Spiel</h1></div>
+    <div id="playerdiv">
+    <label for="player1">Spieler 1:</label><input type="text" placeholder="First Player name" id="player1">
+    <label for="player2">Spieler 2:</label><input type="text" placeholder="Second Player name" id="player2">
+    </div>
+    <Label id="Points"></Label>
     <div id="board">
         <div id="0" class="cell" onclick="Zeichnen(0)"></div>
         <div id="1" class="cell" onclick="Zeichnen(1)"></div>
@@ -32,6 +37,9 @@
         <div id="7" class="cell" onclick="Zeichnen(7)"></div>
         <div id="8" class="cell" onclick="Zeichnen(8)"></div>
     </div>
+    <button>Zurücksetzen der Punkte</button>
+    <button>Zurücksetzen des Spielfeldes</button>
+
 </section>
 </body>
 </html>

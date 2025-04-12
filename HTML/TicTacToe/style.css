@@ -25,14 +25,13 @@ h1 {
 
 #test {
     margin: 20px;
-    padding: 10px;
     background: #73e0ef;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     align-items: center;
-    width: 60%;
+    width: 790px;
     gap: 10px;
     border: 6px solid;
     border-radius: 50px;
@@ -45,9 +44,13 @@ h1 {
     font-weight: bold;
     text-align: center;
 }
-
-#test input, #test button {
+button {
     font-size: 14pt;
+}
+
+#test input{
+    font-size: 14pt;
+    width: 80%;
 }
 
 .cell {
@@ -64,7 +67,7 @@ h1 {
 }
 
 #board {
-    padding: 30px;
+    padding: 20px;
     gap: 20px;
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -75,16 +78,57 @@ h1 {
 }
 
 #game {
-    background: #7d00ff;
-    width: fit-content;
+    background: #a04bff;
+    width: 800px;
     height: fit-content;
     border: 7px solid black;
     box-shadow: 5px 5px 10px #000000;
-    border-radius: 12px;
+    border-radius: 50px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
 }
-.Überschrift{
+
+.Überschrift {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px;
+    text-shadow: 3px 0 15px #0031af;
+}
+#game button{
+    border: 3px solid;
+    border-radius: 10px;
+    background: #ff0072;
+    font-size: 14pt;
+    transition: background-color 600ms ease;
+}
+#game button:hover {
+    background-color: #1eff00;
+}
+#playerdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    text-decoration: underline 3px solid black;
+    border-radius: 10px;
+    border: 3px solid black;
+    box-shadow: 5px 5px 10px #000000;
+}
+input{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 3px 3px 16px #000000;
+    text-align: center;
+}
+label{
+    font-weight: bold;
 }

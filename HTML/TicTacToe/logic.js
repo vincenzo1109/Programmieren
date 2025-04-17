@@ -1,11 +1,16 @@
-alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus.' +
-    'Sonst stimmen die Proportionen der Felder nicht überein. Danke :)')
-currentplayer = 'X'
+// alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus.' +
+//    'Sonst stimmen die Proportionen der Felder nicht überein. Danke :) (Diese Nachricht erscheint erneut nach dem Aktualisieren, dann einfach wegdrücken)')
+let currentplayerchar = 'X'
+let currentplayername = 'X'
 let a = 0
 let b = 0
+let Player1 = 'X'
+let Player2 = 'O'
+let x = 0
+
+Points()
 
 function auslesen() {
-
     let number1 = document.getElementById('number1').value, number2 = document.getElementById('number2').value;
     let n1 = parseFloat(number1);
     let n2 = parseFloat(number2);
@@ -18,113 +23,96 @@ function Zeichnen(a) {
     if (pressedBox.innerText === 'X' || pressedBox.innerText === 'O') {
         alert('Dieses Feld ist bereits belegt')
     } else {
-        pressedBox.innerText = currentplayer;
-        if (currentplayer === 'X') {
-            currentplayer = 'O'
+        pressedBox.innerText = currentplayerchar;
+        if (currentplayerchar === 'X') {
+            currentplayerchar = 'O'
         } else {
-            currentplayer = 'X'
+            currentplayerchar = 'X'
+        }
+        if (currentplayername === document.getElementById('player1').value) {
+            currentplayername = Player2
+        } else {
+            currentplayername = Player1
         }
     }
-    let Player1 = 'X'
-    let Player2 = 'O'
-    if (document.getElementById("player1").value !== '') {
-        Player1 = document.getElementById("player1").value;
-    }
-    if (document.getElementById("player2").value !== '') {
-        Player2 = document.getElementById("player2").value;
-    }
-    console.log(Player1, Player2);
-
-    Board_Kopieren(Player1, Player2)
+    document.getElementById('Won').innerText = '';
+    LabelCurrentplayer();
+    Board_Kopieren();
 }
 
-function Board_Kopieren(Player1, Player2) {
+function Board_Kopieren() {
     let fields = []
     for (let i = 0; i < 9; i++) {
         let field = document.getElementById(i).innerText;
         fields.push(field);
     }
     console.log(fields);
-    Gewonnen(fields, Player1, Player2);
+    Gewonnen(fields);
     Unentschieden(fields);
 }
 
-function Gewonnen(Board, Player1, Player2) {
+function Gewonnen(Board) {
     for (let i = 0; i < 9; i++) {
-//Zeilenprüfung
+        //Zeilenprüfung
         if (Board[3 * i] === Board[i * 3 + 1] && Board[i * 3 + 1] === Board[i * 3 + 2] && Board [i * 3] !== '') {
             setTimeout(function Timer() {
                 if (Board[i * 3] === 'X') {
-                    Points(Player1)
-                    a = a + 1
-                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                    Reset(Board)
+                    Points(Player1);
+                    Reset()
 
                 } else if (Board[i * 3] === 'O') {
-                    Points(Player2)
-                    b = b + 1
-                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                    Reset(Board)
+                    Points(Player2);
+                    Reset()
                 }
             }, 150)
         }
+        //Spaltenprüfung
         if (Board[i] === Board[i + 3] && Board[i + 3] === Board[i + 6] && Board [i] !== '') {
             setTimeout(function Timer() {
                 if (Board[i] === 'X') {
-                    Points(Player1)
-                    a = a + 1
-                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                    Reset(Board)
+                    Points(Player1);
+                    Reset()
 
                 } else if (Board[i] === 'O') {
-                    Points(Player2)
-                    b = b + 1
-                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                    Reset(Board)
+                    Points(Player2);
+                    Reset()
                 }
             }, 150)
         }
-        if (Board[0] === Board[4] && Board[4] === Board[8] && Board [0] !== '') {
-            setTimeout(function Timer() {
-                if (Board[0] === 'X') {
-                    Points(Player1)
-                    a = a + 1
-                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                    Reset(Board)
+    }
+    //Diagonale \
+    if (Board[0] === Board[4] && Board[4] === Board[8] && Board [0] !== '') {
+        setTimeout(function Timer() {
+            if (Board[0] === 'X') {
+                Points(Player1);
+                Reset()
 
-                } else if (Board[0] === 'O') {
-                    Points(Player2)
-                    b = b + 1
-                    document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                    Reset(Board)
-                }
-            }, 150)
-
-            if (Board[2] === Board[4] && Board[4] === Board[6] && Board [2] !== '') {
-                setTimeout(function Timer() {
-                    if (Board[2] === 'X') {
-                        Points(Player1)
-                        a = a + 1
-                        document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                        Reset(Board)
-
-                    } else if (Board[2] === 'O') {
-                        Points(Player2)
-                        b = b + 1
-                        document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-                        Reset(Board)
-                    }
-                }, 150)
+            } else if (Board[0] === 'O') {
+                Points(Player2);
+                Reset()
             }
-        }
+        }, 150)
+    }
+    //Diagonale/
+    if (Board[2] === Board[4] && Board[4] === Board[6] && Board [2] !== '') {
+        setTimeout(function Timer() {
+            if (Board[2] === 'X') {
+                Points(Player1);
+                Reset()
+            } else if (Board[2] === 'O') {
+                Points(Player2);
+                Reset()
+            }
+        }, 150)
     }
 }
 
-function Reset(Board) {
+function Reset() {
     for (let j = 0; j < 9; j++) {
-        Board[j] = ''
-        document.getElementById(j).innerText = Board[j]
+        document.getElementById(j).innerText = ''
     }
+    FirstStart()
+    currentplayerchar = 'X'
 }
 
 function Unentschieden(board) {
@@ -137,7 +125,7 @@ function Unentschieden(board) {
             }
         }
         if (c === 9) {
-            alert('Es ist ein Unentschieden')
+            document.getElementById("Won").innerText = 'Es ist ein Unentschieden'
             Reset(board)
         }
     }, 150)
@@ -146,6 +134,17 @@ function Unentschieden(board) {
 function Points(Player) {
     console.log('Gewinner: ' + Player);
     document.getElementById("Won").innerText = Player + ' hat gewonnen';
+    if (Player === Player1) {
+        console.log(a)
+        a = a + 1
+        console.log(a)
+        document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
+
+    } else if (Player === Player2) {
+        b = b + 1
+        document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
+
+    }
 }
 
 function Pointsreset() {
@@ -155,8 +154,54 @@ function Pointsreset() {
     document.getElementById("Won").innerText = ''
 }
 
-function FieldReset() {
-    for (i = 0; i < 9; i++) {
-        document.getElementById(i).innerText = ''
+function LabelCurrentplayer() {
+    document.getElementById('Currentplayer').innerText = currentplayername + ' ist dran';
+    console.log(currentplayername + ' ist dran');
+}
+
+function FirstStart() {
+    let z = 0
+    for (let i = 0; i < 9; i++) {
+        if (document.getElementById(i).innerText === '')
+            z = z + 1
     }
+    if (z === 9) {
+        console.log(x);
+        if (x <= 0) {
+            if (document.getElementById("player1").value !== '') {
+                Player1 = document.getElementById("player1").value;
+            }
+            if (document.getElementById("player2").value !== '') {
+                Player2 = document.getElementById("player2").value;
+            }
+            if (currentplayername === document.getElementById('player1').value) {
+
+            } else {
+                currentplayername = Player1
+            }
+            document.getElementById('Currentplayer').innerText = Player1 + ' ist dran';
+            document.getElementById("Points").innerText = 'Punktestand: 0 : 0'
+        }
+
+        document.getElementById('button').style.background = "#ff0000"
+
+        document.getElementById('button').innerText = 'Erster Start'
+        x = x - 1
+        console.log(x);
+    } else {
+        x = x + 1;
+        console.log(x);
+        document.getElementById('button').style.background = "yellow"
+        document.getElementById('button').innerText = 'Blockiert (Zuerst muss das Feld leer sein, dann wieder drauf drücken)'
+
+    }
+}
+
+function Turn() {
+    if (currentplayername === document.getElementById('player1').value) {
+        currentplayername = Player2
+    } else {
+        currentplayername = Player1
+    }
+    LabelCurrentplayer()
 }

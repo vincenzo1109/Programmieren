@@ -8,10 +8,17 @@
     <title>TicTacToe</title>
 </head>
 <body>
-<section id="header">
-    <h1 class="Überschrift">TicTacToe</h1>
-    <h2>Dies ist eine Website um TicTacToe zu spielen</h2>
-</section>
+
+<header>
+    <div id="logo-div">
+        <img src="Logo.png" alt="Logo" class="Logo-png"/>
+    </div>
+    <div id="header-div">
+        <h1 class="Überschrift">TicTacToe</h1>
+        <h2>Dies ist eine Website um TicTacToe zu spielen</h2>
+    </div>
+</header>
+
 <section id="test">
     <p>Ein kleiner Rechner (Addition) zum Test von Java-Script</p>
     <label for="number1">Nummer 1: <input type="number" id="number1" placeholder="Enter the first number"></label>
@@ -22,10 +29,15 @@
 <section id="game">
     <div><h1 class="Überschrift">TicTacToe-Spiel</h1></div>
     <div id="playerdiv">
-    <label for="player1">Spieler 1:</label><input type="text" placeholder="First Player name" id="player1">
-    <label for="player2">Spieler 2:</label><input type="text" placeholder="Second Player name" id="player2">
+        <div id="input">
+            <label for="player1">Spieler 1:</label><input type="text" placeholder="First Player name" id="player1">
+            <label for="player2">Spieler 2:</label><input type="text" placeholder="Second Player name" id="player2">
+        </div>
+        <button onclick="FirstStart()" id="button">Erster Start
+        </button>
     </div>
     <Label id="Points"></Label>
+    <label id="Currentplayer"></Label>
     <Label id="Won"></Label>
     <div id="board">
         <div id="0" class="cell" onclick="Zeichnen(0)"></div>
@@ -39,7 +51,7 @@
         <div id="8" class="cell" onclick="Zeichnen(8)"></div>
     </div>
     <button onclick="Pointsreset()">Zurücksetzen der Punkte</button>
-    <button onclick="FieldReset()">Zurücksetzen des Spielfeldes</button>
+    <button onclick="Reset()">Zurücksetzen des Spielfeldes</button>
     <div id="Fehler"></div>
 </section>
 </body>

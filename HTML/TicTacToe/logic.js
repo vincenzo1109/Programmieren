@@ -47,8 +47,8 @@ function Board_Kopieren() {
         fields.push(field);
     }
     console.log(fields);
-    Gewonnen(fields);
     Unentschieden(fields);
+    Gewonnen(fields);
 }
 
 function Gewonnen(Board) {
@@ -95,7 +95,7 @@ function Gewonnen(Board) {
     }
     //Diagonale/
     if (Board[2] === Board[4] && Board[4] === Board[6] && Board [2] !== '') {
-        setTimeout(function Timer() {
+        {
             if (Board[2] === 'X') {
                 Points(Player1);
                 Reset()
@@ -103,7 +103,7 @@ function Gewonnen(Board) {
                 Points(Player2);
                 Reset()
             }
-        }, 150)
+        }
     }
 }
 
@@ -111,7 +111,7 @@ function Reset() {
     for (let j = 0; j < 9; j++) {
         document.getElementById(j).innerText = ''
     }
-    FirstStart()
+    Turn()
     currentplayerchar = 'X'
 }
 
@@ -135,9 +135,7 @@ function Points(Player) {
     console.log('Gewinner: ' + Player);
     document.getElementById("Won").innerText = Player + ' hat gewonnen';
     if (Player === Player1) {
-        console.log(a)
         a = a + 1
-        console.log(a)
         document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
 
     } else if (Player === Player2) {
@@ -203,5 +201,6 @@ function Turn() {
     } else {
         currentplayername = Player1
     }
+    document.getElementById('Currentplayer').innerText = Player1 + ' ist dran';
     LabelCurrentplayer()
 }

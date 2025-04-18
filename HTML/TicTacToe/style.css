@@ -3,6 +3,17 @@ html {
     margin: 0;
     padding: 0;
 }
+.grid-container{
+    display: grid;
+    place-items: center;
+    grid-template-columns:auto 1fr auto;
+    min-height: 100vh;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -21,6 +32,7 @@ body {
 }
 
 header {
+    grid-area: header;
     position: relative;
     display: flex;
     width: 100%;
@@ -32,6 +44,7 @@ header {
 }
 
 footer {
+    grid-area: footer;
     position: relative;
     display: flex;
     background: #a04bff;
@@ -119,6 +132,7 @@ button {
 }
 
 #game {
+    grid-area: main;
     background: #a04bff;
     width: 800px;
     height: fit-content;
@@ -216,4 +230,13 @@ label {
     display: flex;
     flex-direction: column;
     white-space: pre-line;
+}
+
+.Logo-png-down{
+    width: 5%;
+    height: auto;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+
 }

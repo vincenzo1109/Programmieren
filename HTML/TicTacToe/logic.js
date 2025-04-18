@@ -1,4 +1,4 @@
-// alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus.'
+// alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus und dann drehe es ins Querformat.'
 //    'Sonst stimmt das Design nicht überein, da diese Website für Computer gedacht ist. Danke :) (Diese Nachricht erscheint erneut nach dem Aktualisieren, dann einfach wegdrücken)')
 let currentplayerchar = 'X'
 let currentplayername = 'X'
@@ -215,3 +215,7 @@ function Turn() {
     document.getElementById('Currentplayer').innerText = Player1 + ' ist dran';
     LabelCurrentplayer()
 }
+
+window.addEventListener('pageshow', function () {
+    document.getElementById('Websites').selectedIndex = 0;
+});

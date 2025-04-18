@@ -1,5 +1,5 @@
-// alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus.' +
-//    'Sonst stimmen die Proportionen der Felder nicht überein. Danke :) (Diese Nachricht erscheint erneut nach dem Aktualisieren, dann einfach wegdrücken)')
+// alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus.'
+//    'Sonst stimmt das Design nicht überein, da diese Website für Computer gedacht ist. Danke :) (Diese Nachricht erscheint erneut nach dem Aktualisieren, dann einfach wegdrücken)')
 let currentplayerchar = 'X'
 let currentplayername = 'X'
 let a = 0
@@ -195,7 +195,7 @@ function FirstStart() {
 
         document.getElementById('button').style.background = "#ff0000"
 
-        document.getElementById('button').innerText = 'Erster Start'
+        document.getElementById('button').innerText = 'Erster Start (Namen speichern)'
         x = x - 1
         console.log(x);
     } else {

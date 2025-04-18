@@ -2,14 +2,14 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 18pt;
     margin: 0;
-    background: linear-gradient(to bottom, #ff522b, #ff9600);
+    background-color: #ff6744;
     text-align: center;
 }
 
 header {
     position: relative;
     font-size: 22pt;
-    background: #173857;
+    background: #265f93;
     padding: 1px;
     font-style: normal;
     color: whitesmoke;
@@ -103,7 +103,7 @@ footer {
     font-size: 22pt;
     margin-top: 50px;
     padding: 40px;
-    background-color: #173857;
+    background-color: #265f93;
     color: white;
 
 }
@@ -157,7 +157,7 @@ progress::-moz-progress-bar {
 
 .Kontakt-png {
     position: relative;
-    width: max(5%,150px);
+    width: max(5%,100px);
 }
 
 footer div {

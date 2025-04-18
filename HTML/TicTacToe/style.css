@@ -1,15 +1,23 @@
 html {
     font-size: 120%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: #f3a448;
+    background-color: #ff6744;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 header {
@@ -20,7 +28,33 @@ header {
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin: 0;
+}
 
+footer {
+    position: relative;
+    display: flex;
+    background: #a04bff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    width: 100%;
+    overflow-x: hidden;
+    font-size: 90%;
+    gap: 40px;
+}
+
+#div-Website {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#div-Website select {
+    width: 55%;
 }
 
 h1 {
@@ -98,6 +132,7 @@ button {
     align-items: center;
     gap: 15px;
     padding: 30px;
+    margin: 30px;
 }
 
 .Überschrift {
@@ -165,5 +200,15 @@ label {
 
 }
 
+#Points {
+    border: 3px solid;
+    border-radius: 15px;
+    padding: 10px;
+    background: #7cff00;
+}
 
-
+.divider {
+    border-left: 5px solid black;
+    height: 100px;
+    width: 10px;
+}

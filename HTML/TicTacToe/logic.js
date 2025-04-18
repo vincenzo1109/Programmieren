@@ -38,6 +38,10 @@ function Zeichnen(a) {
     document.getElementById('Won').innerText = '';
     LabelCurrentplayer();
     Board_Kopieren();
+    document.getElementById('Won').style.backgroundColor = '';
+    document.getElementById('Won').style.border = '';
+    document.getElementById('Won').style.borderRadius= '';
+    document.getElementById('Won').style.padding= '';
 }
 
 function Board_Kopieren() {
@@ -113,6 +117,7 @@ function Reset() {
     }
     Turn()
     currentplayerchar = 'X'
+
 }
 
 function Unentschieden(board) {
@@ -141,8 +146,11 @@ function Points(Player) {
     } else if (Player === Player2) {
         b = b + 1
         document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
-
     }
+    document.getElementById('Won').style.backgroundColor = 'red';
+    document.getElementById('Won').style.border = '3px solid Black';
+    document.getElementById('Won').style.borderRadius= '10px';
+    document.getElementById('Won').style.padding= '6px';
 }
 
 function Pointsreset() {
@@ -150,6 +158,10 @@ function Pointsreset() {
     b = 0
     document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
     document.getElementById("Won").innerText = ''
+    document.getElementById('Won').style.backgroundColor = '';
+    document.getElementById('Won').style.border = '';
+    document.getElementById('Won').style.borderRadius= '';
+    document.getElementById('Won').style.padding= '';
 }
 
 function LabelCurrentplayer() {
@@ -197,7 +209,6 @@ function FirstStart() {
 
 function Turn() {
     if (currentplayername === document.getElementById('player1').value) {
-        currentplayername = Player2
     } else {
         currentplayername = Player1
     }

@@ -19,13 +19,7 @@
     </div>
 </header>
 
-<section id="test">
-    <p>Ein kleiner Rechner (Addition) zum Test von Java-Script</p>
-    <label for="number1">Nummer 1: <input type="number" id="number1" placeholder="Enter the first number"></label>
-    <label for="number2">Nummer 2: <input type="number" id="number2" placeholder="Enter the second number"></label>
-    <button onclick="auslesen()">Start</button>
-    <output id="Output1"></output>
-</section>
+
 <section id="game">
     <div><h1 class="Überschrift">TicTacToe-Spiel</h1></div>
     <div id="playerdiv">
@@ -33,12 +27,12 @@
             <label for="player1">Spieler 1:</label><input type="text" placeholder="First Player name" id="player1">
             <label for="player2">Spieler 2:</label><input type="text" placeholder="Second Player name" id="player2">
         </div>
-        <button onclick="FirstStart()" id="button">Erster Start
+        <button onclick="FirstStart()" id="button">Erster Start (Namen speichern)
         </button>
     </div>
-    <Label id="Points"></Label>
+    <Label id="Points">Punktestand: 0 : 0 </Label>
     <label id="Currentplayer"></Label>
-    <Label id="Won"></Label>
+    <Label id="Won"> </Label>
     <div id="board">
         <div id="0" class="cell" onclick="Zeichnen(0)"></div>
         <div id="1" class="cell" onclick="Zeichnen(1)"></div>
@@ -54,5 +48,22 @@
     <button onclick="Reset()">Zurücksetzen des Spielfeldes</button>
     <div id="Fehler"></div>
 </section>
+<footer>
+    <div id="div-Website" >
+        <label for="Websites">Andere selbst programmierten Seiten: </label>
+        <select id="Websites" onchange="window.location.href=this.value;">
+            <option id="start" value="" selected="selected">Projekt auswählen</option>
+            <option value="">-----------</option>
+            <option value="Rechner.html">
+                Taschenrechner
+            </option>
+            <option value="https://vincent-bienert.netlify.app/">Lebenslauf</option>
+            <option value="https://vincent-bienert.netlify.app/">Spieler</option>
+        </select>
+    </div>
+    <div class="divider"></div>
+    <div></div>
+
+</footer>
 </body>
 </html>

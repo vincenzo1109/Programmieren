@@ -18,7 +18,7 @@ html {
 @media (max-width: 768px) {
     body {
         transform: scale(0.5);
-        transform-origin: top left;
+        transform-origin: center;
         width: 200vw;
         height: 200vh;
         display: flex;
@@ -30,7 +30,7 @@ html {
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Cascadia Mono", monospace;
     background-color: #ff6744;
     display: flex;
     justify-content: center;

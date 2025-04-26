@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe</title>
     <?php
-    $name = $_GET['name'];
+    $name = 'Vincent';
+
     ?>
 </head>
 <body>
@@ -53,9 +54,9 @@
         <div id="Fehler"></div>
     </section>
     <section>
-    <p>
-        Dein Name ist: <?= $name; ?>
-    </p>
+        <p>
+            Dein Name ist: <?= $name; ?>
+        </p>
     </section>
     <footer>
 
@@ -88,3 +89,5 @@
 </div>
 </body>
 </html>
+
+

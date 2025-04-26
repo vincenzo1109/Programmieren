@@ -18,7 +18,7 @@ html {
 
 @media (max-width: 768px) {
     body {
-        transform: scale(0.8);
+        transform: scale(0.6);
         transform-origin: center;
         width: 200vw;
         height: 200vh;
@@ -31,6 +31,7 @@ html {
         gap: 10px;
     }
     .Logo-png{
+        position: absolute;
         scale: 0.5;
         margin-top: 5px;
         margin-left: 5px;
@@ -264,7 +265,7 @@ label {
 
 }
 
-.phpTest {
+.php {
     grid-area: phpTest;
     position: relative;
 }

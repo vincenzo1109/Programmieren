@@ -18,14 +18,13 @@ html {
 
 @media (max-width: 768px) {
     body {
-        transform: scale(0.5);
+        transform: scale(0.4);
         transform-origin: center;
         width: 200vw;
         height: 200vh;
         display: flex;
         place-items: center;
         justify-content: center;
-        align-items: center;
         margin: 0;
         padding: 10px;
         gap: 10px;

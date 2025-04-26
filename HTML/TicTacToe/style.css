@@ -8,21 +8,22 @@ html {
     display: grid;
     place-items: center;
     grid-template-columns:auto 1fr auto;
-    min-height: 100vh;
     grid-template-areas:
     "header"
     "phpTest"
     "main"
     "footer";
-    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    width: auto;
 }
 
 @media (max-width: 768px) {
     body {
         transform: scale(0.4);
         transform-origin: center;
-        width: 100%;
-        height:auto;
+        width: 200vw;
+        height:100%;
         display: flex;
         place-items: center;
         justify-content: center;

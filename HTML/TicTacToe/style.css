@@ -26,6 +26,8 @@ html {
         justify-content: center;
         align-items: center;
         margin: 0;
+        padding: 10px;
+        gap: 10px;
     }
 }
 

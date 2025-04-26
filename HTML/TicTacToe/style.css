@@ -18,7 +18,7 @@ html {
 
 @media (max-width: 768px) {
     body {
-        transform: scale(0.6);
+        transform: scale(0.5);
         transform-origin: center;
         width: 200vw;
         height: 200vh;
@@ -259,7 +259,7 @@ label {
 .Logo-png-down {
     width: 5%;
     height: auto;
-    position: absolute;
+    position: relative;
     bottom: 10px;
     left: 10px;
 

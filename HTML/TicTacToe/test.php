@@ -53,7 +53,7 @@
         <button onclick="Reset()">Zurücksetzen des Spielfeldes</button>
         <div id="Fehler"></div>
     </section>
-    <section>
+    <section class="php">
         <p>
             Dein Name ist: <?= $name; ?>
         </p>

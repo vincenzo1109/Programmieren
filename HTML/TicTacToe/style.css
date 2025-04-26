@@ -14,19 +14,20 @@ html {
     "phpTest"
     "main"
     "footer";
+    width: 100%;
 }
 
 @media (max-width: 768px) {
     body {
         transform: scale(0.4);
         transform-origin: center;
-        width: 200vw;
-        height: 200vh;
+        width: 100%;
+        height:auto;
         display: flex;
         place-items: center;
         justify-content: center;
         margin: 0;
-        padding: 10px;
+        padding: 0;
         gap: 10px;
     }
     .Logo-png{
@@ -78,6 +79,7 @@ footer {
     overflow-x: hidden;
     font-size: 90%;
     gap: 40px;
+    margin: 0;
 }
 
 #div-Website {

@@ -7,13 +7,12 @@ html {
 .grid-container {
     display: grid;
     place-items: center;
-    grid-template-rows: min-content 1fr 10fr min-content;
+    grid-template-rows: 2fr 1fr 15fr min-content;
     grid-template-areas:
     "header"
     "phpTest"
     "main"
     "footer";
-    height: auto;
     width: 100%;
 }
 
@@ -95,6 +94,7 @@ footer {
     font-size: 90%;
     gap: 40px;
     margin: 0;
+    bottom: 0;
 }
 
 #div-Website {

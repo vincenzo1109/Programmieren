@@ -1,5 +1,3 @@
-// alert('Falls du diese Website auf einem Handy (oder ähnlichem) besuchst, gehe bitte in das Drei-Punkte-Menu und wähle Desktop-Modus aus und dann drehe es ins Querformat.'
-//    'Sonst stimmt das Design nicht überein, da diese Website für Computer gedacht ist. Danke :) (Diese Nachricht erscheint erneut nach dem Aktualisieren, dann einfach wegdrücken)')
 let currentplayerchar = 'X'
 let currentplayername = 'X'
 let a = 0
@@ -29,7 +27,7 @@ function Zeichnen(a) {
         } else {
             currentplayerchar = 'X'
         }
-        if (currentplayername === document.getElementById('player1').value) {
+        if (currentplayername === Player1) {
             currentplayername = Player2
         } else {
             currentplayername = Player1
@@ -40,8 +38,8 @@ function Zeichnen(a) {
     Board_Kopieren();
     document.getElementById('Won').style.backgroundColor = '';
     document.getElementById('Won').style.border = '';
-    document.getElementById('Won').style.borderRadius= '';
-    document.getElementById('Won').style.padding= '';
+    document.getElementById('Won').style.borderRadius = '';
+    document.getElementById('Won').style.padding = '';
 }
 
 function Board_Kopieren() {
@@ -149,8 +147,8 @@ function Points(Player) {
     }
     document.getElementById('Won').style.backgroundColor = 'red';
     document.getElementById('Won').style.border = '3px solid Black';
-    document.getElementById('Won').style.borderRadius= '10px';
-    document.getElementById('Won').style.padding= '6px';
+    document.getElementById('Won').style.borderRadius = '10px';
+    document.getElementById('Won').style.padding = '6px';
 }
 
 function Pointsreset() {
@@ -160,8 +158,8 @@ function Pointsreset() {
     document.getElementById("Won").innerText = ''
     document.getElementById('Won').style.backgroundColor = '';
     document.getElementById('Won').style.border = '';
-    document.getElementById('Won').style.borderRadius= '';
-    document.getElementById('Won').style.padding= '';
+    document.getElementById('Won').style.borderRadius = '';
+    document.getElementById('Won').style.padding = '';
 }
 
 function LabelCurrentplayer() {
@@ -178,14 +176,16 @@ function FirstStart() {
     if (z === 9) {
         console.log(x);
         if (x <= 0) {
+
             if (document.getElementById("player1").value !== '') {
                 Player1 = document.getElementById("player1").value;
-            }
+            } else Player1 = 'X';
+
             if (document.getElementById("player2").value !== '') {
                 Player2 = document.getElementById("player2").value;
-            }
-            if (currentplayername === document.getElementById('player1').value) {
+            } else Player2 = 'O';
 
+            if (currentplayername === document.getElementById('player1').value) {
             } else {
                 currentplayername = Player1
             }
@@ -208,11 +208,12 @@ function FirstStart() {
 }
 
 function Turn() {
-    if (currentplayername === document.getElementById('player1').value) {
+    if (currentplayername === Player1) {
+        currentplayername = Player2
     } else {
         currentplayername = Player1
     }
-    document.getElementById('Currentplayer').innerText = Player1 + ' ist dran';
+    document.getElementById('Currentplayer').innerText = currentplayername + ' ist dran';
     LabelCurrentplayer()
 }
 

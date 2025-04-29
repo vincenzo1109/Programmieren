@@ -7,7 +7,7 @@ html {
 .grid-container {
     display: grid;
     place-items: center;
-    grid-template-rows: 2fr 1fr min-content;
+    grid-template-rows: auto 1fr min-content;
     grid-template-areas:
     "header"
     "phpTest"

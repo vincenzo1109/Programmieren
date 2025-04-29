@@ -50,7 +50,11 @@ html {
         width: 60%;
     }
 }
-
+@media (max-width: 1200px) {
+    #header-div{
+        width:40%;
+    }
+}
 body {
     font-family: "Cascadia Mono", monospace;
     background-color: #ff6744;
@@ -197,7 +201,8 @@ button {
 }
 
 #game button {
-    border: 3px solid;
+    color: black;
+    border: 3px solid black;
     border-radius: 10px;
     background: #ff0000;
     font-size: 14pt;
@@ -243,8 +248,6 @@ label {
     align-items: center;
     gap: 10px;
 }
-
-
 
 #Points {
     border: 3px solid;

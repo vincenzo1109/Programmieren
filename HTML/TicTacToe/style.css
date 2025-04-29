@@ -50,7 +50,7 @@ html {
         width: 60%;
     }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
     #header-div{
         width:40%;
     }

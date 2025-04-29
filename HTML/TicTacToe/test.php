@@ -54,12 +54,6 @@
         <div id="Fehler"></div>
     </section>
 
-    <section class="php">
-        <p>
-            Dein Name ist: <?= $name; ?>
-        </p>
-    </section>
-
     <footer>
         <div class="Impressum"><strong>Impressum</strong>
             Vincent Bienert

@@ -52,7 +52,7 @@ html {
 }
 @media (max-width: 1000px) {
     #header-div{
-        width:40%;
+        width:50%;
     }
 }
 body {

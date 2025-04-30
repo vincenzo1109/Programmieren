@@ -49,6 +49,9 @@ html {
     #header-div{
         width: 60%;
     }
+    footer {
+        font-size: 70%;
+    }
 }
 @media (max-width: 1000px) {
     #header-div{
@@ -57,6 +60,9 @@ html {
     footer a{
         padding-bottom: 7px;
         text-decoration: underline ;
+    }
+    footer{
+        font-size: 80%;
     }
 }
 

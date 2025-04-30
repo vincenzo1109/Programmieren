@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../TicTacToe/style.css">
+    <script rel="text/javascript" src="../TicTacToe/logic.js"></script>
+    <meta charset="UTF-8">
+    <title>Taschenrechner</title>
+</head>
+<body>
+<header>
+    <div id="logo-div">
+        <img src="img/Logo.png" alt="Logo" class="Logo-png"/>
+    </div>
+    <div id="header-div">
+        <h1 class="Überschrift">TicTacToe</h1>
+        <h2>Dies ist eine Website, um TicTacToe zu spielen</h2>
+    </div>
+</header>
+
+<section id="test">
+    <p>Ein kleiner Taschenrechner zum Test von JavaScript</p>
+    <div id="NumbInput">
+        <label for="number1">Nummer 1: <input type="number" id="number1" placeholder="Enter the first number"></label>
+        <label for="number2">Nummer 2: <input type="number" id="number2" placeholder="Enter the second number"></label>
+    </div>
+    <button onclick="auslesen()">Start</button>
+    <output id="Output1"></output>
+</section>
+
+<footer>
+    <div class="Impressum"><strong>Impressum</strong>
+        Vincent Bienert
+        Heinrich-Beck-Str. 23
+        09112 Chemnitz
+    </div>
+    <div class="divider"></div>
+    <div id="div-Website">
+        <label for="Websites">Andere selbst programmierte Seiten: </label>
+        <select id="Websites" onchange="window.location.href=this.value;">
+            <option id="start" value="" selected>Projekt auswählen</option>
+            <option value="">-----------</option>
+            <option value="https://explicit-songs2.netlify.app/">Meine erste Website</option>
+            <option value="https://vincent-bienert.netlify.app/">Lebenslauf</option>
+            <option value="Rechner.html">
+                Taschenrechner
+            </option>
+        </select>
+    </div>
+    <div class="divider"></div>
+    <div class="Impressum">
+        <strong>Kontakt</strong> <br>
+        <a href="mailto:bienert.website@dfgh.net">Email: bienert.website@gmail.com</a>
+        <a href="tel:0178/6091472"> Telefon-Nummer: 01786091472</a>
+        <a href="https://www.instagram.com/vincenzo_2048/">Instagram: @vincenzo_2048</a>
+        <a href="https://github.com/vincenzo1109">GitHub: @vincenzo1109</a>
+    </div>
+</footer>
+</body>
+</html>

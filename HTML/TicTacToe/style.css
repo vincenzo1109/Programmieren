@@ -52,13 +52,17 @@ html {
     footer {
         font-size: 70%;
     }
+    footer a{
+        padding-bottom: 8px;
+        text-decoration: underline ;
+    }
 }
 @media (max-width: 1340px) {
     #header-div{
         width:50%;
     }
     footer a{
-        padding-bottom: 7px;
+        padding-bottom: 8px;
         text-decoration: underline ;
     }
     footer{
@@ -144,7 +148,7 @@ h1 {
     justify-content: center;
     text-align: center;
     align-items: center;
-    width: 790px;
+    width: 60%;
     gap: 10px;
     border: 6px solid;
     border-radius: 50px;
@@ -303,4 +307,7 @@ a{
     color: black;
     margin: 0;
     padding: 4px;
+}
+#NumbInput{
+    display: flex;
 }

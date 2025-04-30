@@ -9,6 +9,7 @@ Website Footer / Header
 andere Rechenoperationen
 
 Lebenslauf:
+title pic
 Kontakt Vertikal anordnen (Schrift+Logo)
 
 Neue Website als Start:

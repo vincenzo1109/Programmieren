@@ -145,7 +145,7 @@ function Points(Player) {
         b = b + 1
         document.getElementById("Points").innerText = 'Punktestand: ' + a + ' : ' + b
     }
-    document.getElementById('Won').style.backgroundColor = 'red';
+    document.getElementById('Won').style.backgroundColor = '#ff6200';
     document.getElementById('Won').style.border = '3px solid Black';
     document.getElementById('Won').style.borderRadius = '10px';
     document.getElementById('Won').style.padding = '6px';
@@ -193,7 +193,7 @@ function FirstStart() {
             document.getElementById("Points").innerText = 'Punktestand: 0 : 0'
         }
 
-        document.getElementById('button').style.background = "#ff0000"
+        document.getElementById('button').style.background = "#5e4af1"
 
         document.getElementById('button').innerText = 'Erster Start (Namen speichern)'
         x = x - 1

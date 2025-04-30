@@ -127,6 +127,7 @@ footer {
     border-radius: 7px;
     padding: 5px;
     text-align: center;
+    background: rgba(101, 82, 239, 0.75);
 }
 
 h1 {
@@ -220,15 +221,15 @@ button {
     color: black;
     border: 3px solid black;
     border-radius: 10px;
-    background: #ff0000;
+    background: #5e4af1;
     font-size: 14pt;
-    transition: background-color 500ms ease;
     padding: 10px;
     margin: 10px;
+    transition: 800ms ;
 }
 
 #game button:hover {
-    background-color: #f3a448;
+    background-color: #3117fb;
 }
 
 #playerdiv {
@@ -269,7 +270,7 @@ label {
     border: 3px solid;
     border-radius: 15px;
     padding: 10px;
-    background: #7cff00;
+    background: #ff6200;
 }
 
 .divider {

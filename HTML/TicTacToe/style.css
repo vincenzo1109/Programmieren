@@ -4,7 +4,7 @@ html {
     padding: 0;
 }
 
-.grid-container {
+.grid-container {   
     display: grid;
     place-items: center;
     grid-template-rows: auto 1fr min-content;
@@ -54,7 +54,12 @@ html {
     #header-div{
         width:50%;
     }
+    footer a{
+        padding-bottom: 7px;
+        text-decoration: underline ;
+    }
 }
+
 body {
     font-family: "Cascadia Mono", monospace;
     background-color: #ff6744;
@@ -90,14 +95,13 @@ footer {
     display: flex;
     background: #a04bff;
     text-align: center;
-    justify-content: center;
+    justify-items: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 40px;
+    padding: 30px;
     width: 100%;
-    overflow-x: hidden;
-    font-size: 90%;
     gap: 40px;
-    margin: 0;
+    margin: 0 auto;
     bottom: 0;
 }
 
@@ -107,10 +111,16 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 33%;
 }
 
 #div-Website select {
     width: 55%;
+    color: black;
+    border: 3px solid black;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: center;
 }
 
 h1 {
@@ -259,13 +269,13 @@ label {
 .divider {
     border-left: 5px solid black;
     height: 100px;
-    width: 10px;
 }
 
 .Impressum {
     display: flex;
     flex-direction: column;
     white-space: pre-line;
+    width: 33%;
 }
 
 .Logo-png-down {
@@ -280,4 +290,10 @@ label {
 .php {
     grid-area: phpTest;
     position: relative;
+}
+
+a{
+    color: black;
+    margin: 0;
+    padding: 3px;
 }

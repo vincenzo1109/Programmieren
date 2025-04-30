@@ -1,6 +1,3 @@
-TicTacToe:
-Handy Website (TicTacToe(max witdh schauen))
-
 Alle:
 Verlinkung v. anderen Webseiten
 Impressum
@@ -9,14 +6,17 @@ Im Footer Kontakt hinzufügen (vcf)
 
 Taschenrechner:
 Website Footer / Header
+andere Rechenoperationen
 
 Lebenslauf:
-Kontakt Vertikal anordnen mit Schrift
+Kontakt Vertikal anordnen (Schrift+Logo)
 
 Neue Website als Start:
 Wer bin ich was mach ich so. Was sind Projekte usw.
 
 
 
-
+PHP lernen:
+Verlauf der Spiele mit Array und Title für eine Sitzung machen
 https://youtu.be/ZTz1qKoFsHo
+Notion

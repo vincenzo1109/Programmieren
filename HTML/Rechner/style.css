@@ -141,8 +141,8 @@ h1 {
 }
 
 #test {
-    margin: 20px;
-    background: #73e0ef;
+    margin: 40px;
+    background: #a04bff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -220,6 +220,7 @@ button {
     align-items: center;
     margin: 20px;
     text-shadow: 3px 0 15px #0031af;
+    font-size: 40pt;
 }
 
 #game button {
@@ -322,7 +323,7 @@ button{
     border-radius: 10px;
     border: 2px solid black;
     box-shadow: 5px 5px 10px #000000;
-    background: #5e4af1;
+    background: #705ef8;
     color: black;
     transition: 800ms ;
 }
@@ -335,6 +336,11 @@ button{
     justify-content: center;
     width: 100%;
 }
+
 output{
     margin: 30px;
+}
+
+#test #Zwischen-Uberschrift{
+    font-size: 30pt;
 }

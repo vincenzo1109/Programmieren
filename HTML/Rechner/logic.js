@@ -1,9 +1,9 @@
 sizing();
+
 function auslesen(Operator) {
-    let number1 = document.getElementById('number1').value, number2 = document.getElementById('number2').value;
-    let n1 = parseFloat(number1);
-    let n2 = parseFloat(number2);
-    Operator(n1, n2);
+    let number1 = parseFloat(document.getElementById('number1').value || "0");
+    let number2 = parseFloat(document.getElementById('number2').value || "0");
+    Operator(number1,number2);
 }
 
 function addition(n1, n2) {

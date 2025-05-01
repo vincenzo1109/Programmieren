@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <script rel="text/javascript" src="../TicTacToe/logic.js"></script>
+    <script rel="text/javascript" src="logic.js"></script>
     <meta charset="UTF-8">
     <title>Taschenrechner</title>
+    <link rel="icon" href="img/favicon.ico" type="image/png"/>
 </head>
 <body>
 <header>
@@ -13,7 +14,7 @@
     </div>
     <div id="header-div">
         <h1 class="Überschrift">TicTacToe</h1>
-        <h2>Dies ist eine Website, um TicTacToe zu spielen</h2>
+        <h2>Ich habe auf dieser Website das erste mal JavaScript programmieren probiert</h2>
     </div>
 </header>
 
@@ -23,8 +24,17 @@
         <label for="number1">Nummer 1: <input type="number" id="number1" placeholder="Enter the first number"></label>
         <label for="number2">Nummer 2: <input type="number" id="number2" placeholder="Enter the second number"></label>
     </div>
-    <button onclick="auslesen()">Start</button>
+    <div id="operator">
+    <button onclick="auslesen(addition)">+</button>
+    <button onclick="auslesen(subtraction)">-</button>
+    <button onclick="auslesen(division)">/</button>
+    <button onclick="auslesen(multiplication)">*</button>
+    <button onclick="auslesen(Faculty)">!</button>
+    <button onclick="auslesen(squareroot)">√</button>
+    <button onclick="auslesen(Square)">x^2</button>
+    </div>
     <output id="Output1"></output>
+    <p>Hinweis: Bei Fakultät, Wurzel ziehen und Quadrieren gilt nur die erste Zahl</p>
 </section>
 
 <footer>

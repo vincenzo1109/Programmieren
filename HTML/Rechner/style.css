@@ -153,6 +153,7 @@ h1 {
     border: 6px solid;
     border-radius: 50px;
     box-shadow: 5px 5px 20px black;
+    padding: 20px;
 }
 
 #test p {
@@ -310,4 +311,30 @@ a{
 }
 #NumbInput{
     display: flex;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px #000000;
+    background: #5e4af1;
+    color: black;
+    transition: 800ms ;
+}
+
+#operator{
+    display: grid;
+    grid-template-columns: repeat(3, 20%);
+    grid-template-rows: repeat(3, 20%);
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+}
+output{
+    margin: 30px;
 }

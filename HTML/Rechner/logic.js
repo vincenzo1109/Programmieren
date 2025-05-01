@@ -1,3 +1,4 @@
+sizing();
 function auslesen(Operator) {
     let number1 = document.getElementById('number1').value, number2 = document.getElementById('number2').value;
     let n1 = parseFloat(number1);
@@ -58,4 +59,4 @@ function sizing() {
 }
 
 window.addEventListener('resize', sizing);
-sizing();
+window.addEventListener('load', sizing);

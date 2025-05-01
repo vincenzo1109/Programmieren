@@ -4,10 +4,6 @@ Impressum
 Icons ändern
 Im Footer Kontakt hinzufügen (vcf)
 
-Taschenrechner:
-Website Footer / Header
-andere Rechenoperationen
-
 Lebenslauf:
 title pic
 Kontakt Vertikal anordnen (Schrift+Logo)

@@ -4,7 +4,7 @@ html {
     padding: 0;
 }
 
-.grid-container {   
+.grid-container {
     display: grid;
     place-items: center;
     grid-template-rows: auto 1fr min-content;
@@ -37,35 +37,43 @@ html {
         padding: 0;
         gap: 10px;
     }
-    .Logo-png{
+
+    .Logo-png {
         position: absolute;
         top: 10px;
         left: 10px;
 
     }
+
     .grid-container {
         width: 100%;
     }
-    #header-div{
+
+    #header-div {
         width: 60%;
     }
+
     footer {
         font-size: 70%;
     }
-    footer a{
+
+    footer a {
         padding-bottom: 8px;
-        text-decoration: underline ;
+        text-decoration: underline;
     }
 }
+
 @media (max-width: 1340px) {
-    #header-div{
-        width:50%;
+    #header-div {
+        width: 50%;
     }
-    footer a{
+
+    footer a {
         padding-bottom: 8px;
-        text-decoration: underline ;
+        text-decoration: underline;
     }
-    footer{
+
+    footer {
         font-size: 80%;
     }
 }
@@ -231,7 +239,7 @@ button {
     font-size: 14pt;
     padding: 10px;
     margin: 10px;
-    transition: 800ms ;
+    transition: 800ms;
 }
 
 #game button:hover {
@@ -305,16 +313,17 @@ label {
     position: relative;
 }
 
-a{
+a {
     color: black;
     margin: 0;
     padding: 4px;
 }
-#NumbInput{
+
+#NumbInput {
     display: flex;
 }
 
-button{
+button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -325,22 +334,24 @@ button{
     box-shadow: 5px 5px 10px #000000;
     background: #705ef8;
     color: black;
-    transition: 800ms ;
+    transition: 800ms;
 }
 
-#operator{
+#operator {
     display: grid;
     grid-template-columns: repeat(3, 20%);
     grid-template-rows: repeat(3, 20%);
     gap: 30px;
     justify-content: center;
     width: 100%;
+    margin: 50px;
 }
 
-output{
-    margin: 30px;
+output {
+    font-size: 25pt;
+    font-style: italic;
 }
 
-#test #Zwischen-Uberschrift{
+#test #Zwischen-Uberschrift {
     font-size: 30pt;
 }

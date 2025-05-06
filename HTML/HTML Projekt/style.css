@@ -21,3 +21,6 @@ body{
     display: flex;
     background-color: #000000;
 }
+a{
+    padding: 10px;
+}

@@ -218,3 +218,21 @@ progress::-moz-progress-bar {
     border-left: 5px solid black;
     height: 100px;
 }
+#div-Website {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
+#div-Website select {
+    width: 55%;
+    color: black;
+    border: 3px solid black;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: center;
+    background: rgba(101, 82, 239, 0.75);
+}

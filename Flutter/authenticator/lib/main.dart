@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
@@ -63,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int rest = 0;
   int Rekord = 0;
+  int interval = 0;
+  int increment = 0;
+  Timer? _autoClickTimer;
 
   void _incrementCounter() {
     setState(() {
@@ -72,22 +76,44 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      record();
+      recordshow();
     });
-record();
+    recordshow();
+    startAutoClicker();
   }
 
   @override
-  void initState() {
-    super.initState();
-    record();
+  void startAutoClicker() {
+    _autoClickTimer?.cancel();
+    if (_counter >= 1000) {
+      interval = 1000;
+      increment = 5;
+    } else if (_counter >= 100) {
+      interval = 1000;
+      increment = 1;
+    }
+
+    _autoClickTimer = Timer.periodic(Duration(milliseconds: interval),(timer){
+      setState(() {
+        recordshow();
+        _counter = _counter + increment;
+        recordshow();
+      });
+      startAutoClicker();
+      recordshow();
+    });
   }
 
-  void record() {
+  void initState() {
+    super.initState();
+    recordshow();
+  }
+
+  void recordshow() {
     setState(() {
       var record = Hive.box('record');
       Rekord = record.get('record', defaultValue: 0);
-      if (_counter >= Rekord+1) {
+      if (_counter >= Rekord + 1) {
         record.put('record', _counter);
         rest = 0;
       } else {
@@ -105,95 +131,103 @@ record();
   void loadNum() {
     var storage = Hive.box('StorageNum');
     setState(() {
-      _counter = storage.get('counter',defaultValue: 0);
+      _counter = storage.get('counter', defaultValue: 0);
     });
-    record();
+    recordshow();
   }
 
-  void resetRecord(){
-    setState(() {
-      Rekord = 0;
-      var Record = Hive.box('record');
-      Record.put('record', 0);
-      record();
-    });
-    }
+  void resetRecord() {
+    Rekord = 0;
+    var Record = Hive.box('record');
+    Record.put('record', 0);
+    _counter = 0;
+    recordshow();
+    _autoClickTimer?.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: Colors.teal,
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        backgroundColor: Colors.black,
         title: Text(widget.title),
+        centerTitle: true,
+        foregroundColor: Colors.white,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Dein Rekord liegt bei $Rekord'),
-            Text('Du hast den Knopf $_counter mal gedrückt'),
-            if (rest > 0)
-              Text('Noch $rest mal bis zu deinem Rekord')
-            else
-              Text('Du hast deinen Rekord erreicht'),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SizedBox.expand(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: <Widget>[
+              Text(
+                'Dein Rekord: $Rekord',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Du hast den Knopf $_counter mal gedrückt',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                rest > 0
+                    ? 'Noch $rest mal bis zum Rekord!'
+                    : 'Rekord erreicht!',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: rest > 0 ? Colors.orange : Colors.green,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 32),
+              ElevatedButton.icon(
+                onPressed: _incrementCounter,
+                icon: Icon(Icons.ads_click),
+                label: Text('Clicken'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  textStyle: TextStyle(fontSize: 20),
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        spacing: 10.0,
+        spacing: 20,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.qr_code),
-          ),
-
           FloatingActionButton(
             onPressed: saveNum,
             tooltip: 'Zahl speichern',
+            backgroundColor: Colors.lightBlueAccent,
             child: const Icon(Icons.download),
           ),
-
+          FloatingActionButton(
+            onPressed: resetRecord,
+            tooltip: 'Alles zurücksetzen',
+            backgroundColor: Colors.red,
+            child: const Icon(Icons.lock_reset),
+          ),
           FloatingActionButton(
             onPressed: loadNum,
             tooltip: 'Zahl laden',
+            backgroundColor: Colors.green,
             child: const Icon(Icons.upload),
           ),
-          FloatingActionButton(
-              onPressed: resetRecord,
-            tooltip: 'Zurücksetzen des Rekordes',
-            child: const Icon(Icons.lock_reset),
-          )
         ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

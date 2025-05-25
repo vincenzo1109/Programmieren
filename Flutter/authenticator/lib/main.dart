@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'dart:async';
@@ -8,6 +10,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('StorageNum');
   await Hive.openBox('record');
+  await Hive.openBox('CPS');
   runApp(const MyApp());
 }
 
@@ -66,6 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
   int Rekord = 0;
   int interval = 0;
   int increment = 0;
+  int costCPS = 10;
+  int costACPS = 500;
+  int currentCPS = 1;
+  int currentACPS = 0;
+  bool varstartAutoClicker = false;
   Timer? _autoClickTimer;
 
   void _incrementCounter() {
@@ -75,37 +83,37 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter = _counter + currentCPS;
       recordshow();
     });
     recordshow();
-    startAutoClicker();
   }
 
-  @override
   void startAutoClicker() {
-    _autoClickTimer?.cancel();
-    if (_counter >= 1000) {
-      interval = 1000;
-      increment = 5;
-    } else if (_counter >= 100) {
-      interval = 1000;
-      increment = 1;
+    if (_autoClickTimer != null && _autoClickTimer!.isActive) {
+    } else {
+      if (currentACPS >= 1) {
+        interval = 1000;
+      }
     }
 
-    _autoClickTimer = Timer.periodic(Duration(milliseconds: interval),(timer){
+    _autoClickTimer = Timer.periodic(Duration(milliseconds: interval), (timer) {
       setState(() {
         recordshow();
+        increment = currentACPS;
         _counter = _counter + increment;
         recordshow();
+        saveNum();
       });
-      startAutoClicker();
       recordshow();
     });
   }
 
   void initState() {
     super.initState();
+    var CPSPrice = Hive.box('CPS');
+    CPSPrice.put('costCPS', costCPS);
+    CPSPrice.put('costACPS', costACPS);
     recordshow();
   }
 
@@ -133,16 +141,91 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter = storage.get('counter', defaultValue: 0);
     });
-    recordshow();
+    var cps = Hive.box('CPS');
+    setState(() {
+      costACPS = cps.get('costACPS');
+      costCPS = cps.get('costCPS');
+      currentCPS = cps.get('CPS');
+      currentACPS = cps.get('ACPS');
+      recordshow();
+    });
   }
 
   void resetRecord() {
-    Rekord = 0;
-    var Record = Hive.box('record');
-    Record.put('record', 0);
-    _counter = 0;
-    recordshow();
+    setState(() {
+      Rekord = 0;
+      currentCPS = 1;
+      costCPS = 10;
+      currentACPS = 0;
+      costACPS = 500;
+      _counter = 0;
+      recordshow();
+    });
     _autoClickTimer?.cancel();
+  }
+
+  void UpgradeFailed(context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Not Enough Clicks"),
+          content: Text("Don't have enough Clicks to buy this Upgrade."),
+          actions: [
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void buyCPS(type) {
+    var CPSPrice = Hive.box('CPS');
+    var costofthis = 0;
+    CPSPrice.put('costCPS', costCPS);
+    CPSPrice.put('costACPS', costACPS);
+    costofthis = CPSPrice.get(type);
+    setState(() {
+      _counter = _counter - costofthis;
+    });
+    if (type == 'costCPS') {
+      currentCPS++;
+      var CPS = Hive.box('CPS');
+      CPS.put('CPS', currentCPS);
+      costCPS = costCPS + 10;
+      CPSPrice.put('costCPS', costCPS);
+    } else if (type == 'costACPS') {
+      currentACPS = currentACPS + 5;
+      print(currentACPS);
+      var ACPS = Hive.box('CPS');
+      ACPS.put('ACPS', currentACPS);
+      costACPS = costACPS + 100;
+      ACPS.put('costACPS', costACPS);
+      if (varstartAutoClicker == false) {
+        varstartAutoClicker = true;
+        startAutoClicker();
+      }
+    }
+  }
+
+  void proofPrice(whereToGo, int cost) {
+    if (_counter >= cost) {
+      print('KP2');
+      print('$whereToGo,$cost, $_counter');
+      if (whereToGo == 'buyCPS') {
+        print('KP');
+        buyCPS('costCPS');
+      } else if (whereToGo == 'buyACPS') {
+        buyCPS('costACPS');
+      }
+    } else {
+      UpgradeFailed(context);
+    }
   }
 
   @override
@@ -156,21 +239,109 @@ class _MyHomePageState extends State<MyHomePage> {
         foregroundColor: Colors.white,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
+
         child: SizedBox.expand(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
 
             children: <Widget>[
-              Text(
-                'Dein Rekord: $Rekord',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Container(
+                margin: EdgeInsets.only(bottom: 15),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 16),
+                    Text(
+                      'Dein Rekord: $Rekord Münzen',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Münzen/Klick: $currentCPS',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+                    Text(
+                      'Münzen/Sekunde: $currentACPS',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
+              Container(
+                margin: EdgeInsets.only(bottom: 30),
+                child: Column(
+                  spacing: 18,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        proofPrice('buyCPS', costCPS);
+                      },
+                      child: Text(
+                          '+1 Münzen/Klick:\n(Kosten: $costCPS Klicks)',
+                        textAlign: TextAlign.center,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 25,
+                          vertical: 15,
+                        ),
+                        textStyle: TextStyle(fontSize: 19),
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        proofPrice('buyACPS', costACPS);
+                      },
+                      child: Text(
+                        '+5 automatische Münzen/Sekunde:\n(Kosten: $costACPS Klicks)',
+                        textAlign: TextAlign.center,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 15,
+                        ),
+                        textStyle: TextStyle(fontSize: 19),
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
               const SizedBox(height: 16),
               Text(
-                'Du hast den Knopf $_counter mal gedrückt',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                'Coins: $_counter',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
+                  decoration: TextDecoration.underline,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
@@ -183,15 +354,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 18),
               ElevatedButton.icon(
                 onPressed: _incrementCounter,
                 icon: Icon(Icons.ads_click),
-                label: Text('Clicken'),
+                label: Text('Geld verdienen'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                   textStyle: TextStyle(fontSize: 20),
                   elevation: 10,
                   shape: RoundedRectangleBorder(

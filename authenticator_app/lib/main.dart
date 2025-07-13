@@ -223,9 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           trailing: PopupMenuButton<String>(
             onSelected: (value) {
-              if (value == 'edit') {
-                editissuer();
-              } else if (value == 'delete') {
+              if (value == 'delete') {
                 deleteCode();
               } else if (value == 'generate QR-Code') {
                 generatQRCode();

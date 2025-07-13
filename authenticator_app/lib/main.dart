@@ -65,7 +65,6 @@ class MyHomePage extends StatefulWidget {
 int secretNum = 0;
 List<String> Secrets = [];
 
-// ignore: must_be_immutable
 class QRCodeScan extends StatelessWidget {
   bool found = false;
   final MobileScannerController controller = MobileScannerController();
@@ -252,9 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //Code wird mit HIVE eintrag gelöscht und anschließen alles andere mit Hilfe von for-Schleife abfragen ob leer und wenn dann das nächste vorschieben
   }
 
-  void editissuer() {
-    //Dienst und benutzername kann geändert werden
-  }
+  void generatQRCode() {
 
-  void generatQRCode() {}
+  }
 }

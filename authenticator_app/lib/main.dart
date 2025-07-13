@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:otp/otp.dart';
 import 'dart:async';
+import 'package:qr_flutter/qr_flutter.dart';
+
 
 void main() async {
   await Hive.initFlutter();
@@ -95,13 +97,15 @@ class QRCodeScan extends StatelessWidget {
                   Uri url = Uri.parse(QRcodeString);
                   var secret = url.queryParameters['secret'];
                   var isuser =
-                      QRcodeString.split('otpauth://totp/')[1].split('?')[0];
+                  QRcodeString.split('otpauth://totp/')[1].split('?')[0];
                   ;
 
                   if (secret != null) {
                     String code = OTP.generateTOTPCodeString(
                       secret,
-                      DateTime.now().millisecondsSinceEpoch,
+                      DateTime
+                          .now()
+                          .millisecondsSinceEpoch,
                       length: 6,
                       algorithm: Algorithm.SHA1,
                     );
@@ -175,7 +179,10 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.green[500],
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .primary,
       ),
       body: ListView(children: codeGeneration()),
       floatingActionButton: FloatingActionButton(
@@ -200,7 +207,9 @@ class _MyHomePageState extends State<MyHomePage> {
       String secret = secrets.get(i).toString();
       String code = OTP.generateTOTPCodeString(
         secret,
-        DateTime.now().millisecondsSinceEpoch,
+        DateTime
+            .now()
+            .millisecondsSinceEpoch,
         interval: 30,
         length: 6,
         algorithm: Algorithm.SHA1,
@@ -224,20 +233,23 @@ class _MyHomePageState extends State<MyHomePage> {
           trailing: PopupMenuButton<String>(
             onSelected: (value) {
               if (value == 'delete') {
-                deleteCode();
+                deleteCode(i);
               } else if (value == 'generate QR-Code') {
-                generatQRCode();
+                generatQRCode(i);
               }
             },
             itemBuilder:
-                (context) => [
-                  PopupMenuItem(value: 'edit', child: Text('Bearbeiten')),
-                  PopupMenuItem(value: 'delete', child: Text('Löschen')),
-                  PopupMenuItem(
-                    value: 'generate QR-Code',
-                    child: Text('QR-Code erstellen'),
-                  ),
-                ],
+                (context) =>
+            [
+              PopupMenuItem(
+                  value: 'delete',
+                  child: Text('Löschen')),
+              PopupMenuItem(
+                value: 'generate QR-Code',
+                child: Text('QR-Code erstellen'),
+              ),
+            ],
+            initialValue: (i.toString()),
           ),
         ),
       );
@@ -245,11 +257,36 @@ class _MyHomePageState extends State<MyHomePage> {
     return widgets;
   }
 
-  void deleteCode() {
+  void deleteCode(int i) {
     //Code wird mit HIVE eintrag gelöscht und anschließen alles andere mit Hilfe von for-Schleife abfragen ob leer und wenn dann das nächste vorschieben
   }
 
-  void generatQRCode() {
+  void generatQRCode(int i) {
+    var secrets = Hive.box('Secrets');
+    var secret = secrets.get(i);
+    var issuers = Hive.box('issuer');
+    var issuer = issuers.get(i);
 
+    String URL = 'otpauth://totp/${Uri.encodeComponent(issuer)}?secret=$secret&issuer=${Uri.encodeComponent(issuer)}';
+
+    showDialog(
+      context: context,
+      builder: (context) =>
+          AlertDialog(
+              title: Text('QR-Code'),
+              content: QrImage(
+                data: 'https://example.com',
+                version: QrVersions.auto,
+                size: 200,
+              ),
+              actions: [
+              TextButton(
+              child: Text('Schließen'),
+      onPressed: () => Navigator.of(context).pop(),
+    ),]
+    ,
+    )
+    ,
+    );
   }
 }

@@ -6,11 +6,11 @@ import 'package:otp/otp.dart';
 import 'dart:async';
 import 'package:qr_flutter/qr_flutter.dart';
 
-
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox('Secrets');
   await Hive.openBox('issuer');
+  await Hive.openBox('issuer2');
   runApp(const MyApp());
 }
 
@@ -67,6 +67,8 @@ class MyHomePage extends StatefulWidget {
 int secretNum = 0;
 List<String> Secrets = [];
 
+
+// ignore: must_be_immutable
 class QRCodeScan extends StatelessWidget {
   bool found = false;
   final MobileScannerController controller = MobileScannerController();
@@ -96,16 +98,15 @@ class QRCodeScan extends StatelessWidget {
 
                   Uri url = Uri.parse(QRcodeString);
                   var secret = url.queryParameters['secret'];
+                  var issuer2 = url.queryParameters['issuer'];
                   var isuser =
-                  QRcodeString.split('otpauth://totp/')[1].split('?')[0];
+                      QRcodeString.split('otpauth://totp/')[1].split('?')[0];
                   ;
 
                   if (secret != null) {
                     String code = OTP.generateTOTPCodeString(
                       secret,
-                      DateTime
-                          .now()
-                          .millisecondsSinceEpoch,
+                      DateTime.now().millisecondsSinceEpoch,
                       length: 6,
                       algorithm: Algorithm.SHA1,
                     );
@@ -114,6 +115,8 @@ class QRCodeScan extends StatelessWidget {
                     Box.put(secretNum, secret);
                     var issuer = Hive.box('issuer');
                     issuer.put(secretNum, isuser);
+                    var issuer2Box = Hive.box('issuer2');
+                    issuer2Box.put(secretNum, issuer2);
                     secretNum++;
                     debugPrint(secret);
                     Secrets.add(code);
@@ -138,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     final box = Hive.box('Secrets');
-    Secrets = List.generate(box.length, (index) => box.get(index).toString());
+
     secretNum = box.length;
     setState(() {});
     _updateProgress();
@@ -179,10 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.green[500],
           ),
         ),
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: ListView(children: codeGeneration()),
       floatingActionButton: FloatingActionButton(
@@ -203,13 +203,12 @@ class _MyHomePageState extends State<MyHomePage> {
     var secrets = Hive.box('Secrets');
     var issuer = Hive.box('issuer');
     List<Widget> widgets = [];
-    for (int i = 0; i < secrets.length; i++) {
-      String secret = secrets.get(i).toString();
+    for (var i in secrets.keys) {
+      if (secrets.get(i) == null || issuer.get(i) == null) continue;
+      var secret = secrets.get(i).toString();
       String code = OTP.generateTOTPCodeString(
         secret,
-        DateTime
-            .now()
-            .millisecondsSinceEpoch,
+        DateTime.now().millisecondsSinceEpoch,
         interval: 30,
         length: 6,
         algorithm: Algorithm.SHA1,
@@ -239,16 +238,13 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             },
             itemBuilder:
-                (context) =>
-            [
-              PopupMenuItem(
-                  value: 'delete',
-                  child: Text('Löschen')),
-              PopupMenuItem(
-                value: 'generate QR-Code',
-                child: Text('QR-Code erstellen'),
-              ),
-            ],
+                (context) => [
+                  PopupMenuItem(value: 'delete', child: Text('Löschen')),
+                  PopupMenuItem(
+                    value: 'generate QR-Code',
+                    child: Text('QR-Code erstellen'),
+                  ),
+                ],
             initialValue: (i.toString()),
           ),
         ),
@@ -257,8 +253,44 @@ class _MyHomePageState extends State<MyHomePage> {
     return widgets;
   }
 
-  void deleteCode(int i) {
-    //Code wird mit HIVE eintrag gelöscht und anschließen alles andere mit Hilfe von for-Schleife abfragen ob leer und wenn dann das nächste vorschieben
+  void deleteCode(int i) async {
+    bool? delete = await showDialog<bool>(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('Löschen des Codes'),
+            content: Text(
+              'Bist du dir sicher, dass du den Code löschen möchtest?',
+            ),
+            actions: [
+              TextButton(
+                child: Text('Nein'),
+                onPressed: () => Navigator.of(context).pop(false),
+              ),
+              TextButton(
+                child: Text('Ja'),
+                onPressed: () => Navigator.of(context).pop(true),
+              ),
+            ],
+          ),
+    );
+    if (delete == true) {
+      var secretsBox = Hive.box('Secrets');
+      var issuer2Box = Hive.box('issuer2');
+      var issuerBox = Hive.box('issuer');
+
+      issuerBox.delete(i);
+      secretsBox.delete(i);
+      issuer2Box.delete(i);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Der Code und alle anderen Daten dieses Codes wurden erfolgreich entfernt.',
+          ),
+        ),
+      );
+    }
+    setState(() {});
   }
 
   void generatQRCode(int i) {
@@ -266,27 +298,31 @@ class _MyHomePageState extends State<MyHomePage> {
     var secret = secrets.get(i);
     var issuers = Hive.box('issuer');
     var issuer = issuers.get(i);
+    var issuer2Box = Hive.box('issuer2');
+    var issuer2 = issuer2Box.get(i);
 
-    String URL = 'otpauth://totp/${Uri.encodeComponent(issuer)}?secret=$secret&issuer=${Uri.encodeComponent(issuer)}';
-
+    String URL = 'otpauth://totp/$issuer?secret=$secret&issuer=$issuer2';
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialog(
-              title: Text('QR-Code'),
-              content: QrImage(
-                data: 'https://example.com',
+      builder:
+          (context) => AlertDialog(
+            title: Text('QR-Code'),
+            content: SizedBox(
+              width: 200,
+              height: 200,
+              child: QrImageView(
+                data: URL,
                 version: QrVersions.auto,
-                size: 200,
+                size: 200.0,
               ),
-              actions: [
+            ),
+            actions: [
               TextButton(
-              child: Text('Schließen'),
-      onPressed: () => Navigator.of(context).pop(),
-    ),]
-    ,
-    )
-    ,
+                child: Text('Schließen'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
+          ),
     );
   }
 }

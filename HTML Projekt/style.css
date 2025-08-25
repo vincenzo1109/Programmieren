@@ -1,0 +1,52 @@
+
+body {
+    font-family: "Cascadia Mono", monospace;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-image: url("img/Porsche.jpg");
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    font-size: 20pt;
+    margin: 0;
+    padding: 30px;
+    overflow: hidden;
+}
+
+header {
+    background-color: rgba(168, 255, 0, 0.90);
+    width: 90%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+#Einführung {
+    background-color: rgba(168, 255, 0, 0.90);
+    margin-top: 530px;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+#Links {
+    margin: 30px;
+}
+
+a {
+    border-radius: 10px;
+    margin-outside: auto;
+    padding: 20px;
+    text-decoration: underline;
+    font-style: italic;
+    color: white;
+    background-color: rgba(2, 0, 0, 0.62);
+}
+
+#Inhalt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

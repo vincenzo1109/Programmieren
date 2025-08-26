@@ -64,11 +64,10 @@ const cars = [
         Gears: 7,
         mass: 1465,
     },
-    {},
 ]
 
 const Werte = {
-    fuel: ["Benzin", "Diesel"],
+    fuel: ["Benzin", "Super"],
     seats: [2, 5, 7],
     acceleration: [
         {min: "3m/s", max: "4m/s"},
@@ -130,7 +129,7 @@ window.addEventListener('DOMContentLoaded', function () {
         Fragen_generieren();
     }
 })
-
+let gesEntscheidung = [];
 function Fragen_generieren() {
 
     const importKatgr = JSON.parse(localStorage.getItem('ImportKatgr'));
@@ -140,7 +139,8 @@ function Fragen_generieren() {
     document.querySelectorAll('input:checked').forEach(checkbox => {
         Entscheidung.push(checkbox.value);
     })
-
+    gesEntscheidung = gesEntscheidung.concat(Entscheidung)
+console.log(Entscheidung);
     document.querySelectorAll('input').forEach(input => {
         input.remove();
     });
@@ -172,11 +172,37 @@ function Fragen_generieren() {
         }
 
         b++;
-    }
-    else{
+    } else {
         fertiges_Auto();
     }
 }
+
+function passtZu(auto, wert) {
+    // Bereichsangaben "min - max" prüfen
+    if (wert.includes("-")) {
+        const [minStr, maxStr] = wert.split("-").map(s => s.trim());
+        const min = Number(minStr.replace(/[^\d]/g, ""));
+        const max = Number(maxStr.replace(/[^\d]/g, ""));
+        for (let key in auto) {
+            if (typeof auto[key] === "number" && auto[key] >= min && auto[key] <= max) return true;
+        }
+        return false;
+    }
+
+    // exakte Übereinstimmung
+    return Object.values(auto).some(v => String(v) === wert);
+}
+
 function fertiges_Auto() {
+    let points = [];
+
+    for (let i = 0; i < cars.length; i++) {
+        let score = 0;
+        for (let j = 0; j < gesEntscheidung.length; j++) {
+            if (passtZu(cars[i], gesEntscheidung[j])) score++;
+        }
+        points.push({ auto: cars[i].model, score });
+    }
+    console.log(points);
 
 }

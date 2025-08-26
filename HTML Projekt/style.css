@@ -5,7 +5,7 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    background-image: url("img/Porsche.jpg");
+    background-image: url("img/Porsche.png");
     background-blend-mode: color;
     background-repeat: no-repeat;
     font-size: 20pt;

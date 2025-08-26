@@ -130,6 +130,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 })
 let gesEntscheidung = [];
+
 function Fragen_generieren() {
 
     const importKatgr = JSON.parse(localStorage.getItem('ImportKatgr'));
@@ -140,7 +141,7 @@ function Fragen_generieren() {
         Entscheidung.push(checkbox.value);
     })
     gesEntscheidung = gesEntscheidung.concat(Entscheidung)
-console.log(Entscheidung);
+    console.log(Entscheidung);
     document.querySelectorAll('input').forEach(input => {
         input.remove();
     });
@@ -201,8 +202,21 @@ function fertiges_Auto() {
         for (let j = 0; j < gesEntscheidung.length; j++) {
             if (passtZu(cars[i], gesEntscheidung[j])) score++;
         }
-        points.push({ auto: cars[i].model, score });
+        points.push({auto: cars[i].model, score});
     }
     console.log(points);
+    let maxpoints = -1;
+   let bestesauto;
+    for (let i = 0; i < points.length; i++) {
+        if (points[i].score > maxpoints) {
+            maxpoints = points[i].score;
+            bestesauto = points[i].auto;
+        }
+    }
+Autoseiteaufbauen(maxpoints, bestesauto);
+}
+
+function Autoseiteaufbauen(höchsterscore, bestesauto) {
+window.open("ToDolist.html");
 
 }

@@ -216,7 +216,8 @@ function fertiges_Auto() {
 Autoseiteaufbauen(maxpoints, bestesauto);
 }
 
-function Autoseiteaufbauen(höchsterscore, bestesauto) {
+function Autoseiteaufbauen(hoechsterscore, bestesauto) {
+    console.log(hoechsterscore, bestesauto);
 window.open("ToDolist.html");
 
 }

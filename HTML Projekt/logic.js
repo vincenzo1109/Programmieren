@@ -219,5 +219,4 @@ Autoseiteaufbauen(maxpoints, bestesauto);
 function Autoseiteaufbauen(hoechsterscore, bestesauto) {
     console.log(hoechsterscore, bestesauto);
 window.open("ToDolist.html");
-
 }
